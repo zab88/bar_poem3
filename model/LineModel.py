@@ -85,6 +85,83 @@ class LineModel():
                 #     ALL_HOMONYMS_NUM[index] = ALL_HOMONYMS_NUM[index] + 1
         return ALL_HOMONYMS
 
+    #http://www.dialog-21.ru/digests/dialog2006/materials/pdf/Kozmin.pdf
+    def get_metrical_feet(self):
+        #split on syllables
+        vowels = [u'а', u'у', u'о', u'ы', u'и', u'э', u'я', u'ю', u'ё', u'е',
+                  u'А', u'У', u'О', u'Ы', u'И', u'Э', u'Я', u'Ю', u'Ё', u'Е',]
+        vector = []
+        for w in self.words:
+            vector_word = []
+            for letter in w.word_original:
+                if letter in vowels:
+                    vector_word.append(1)
+                #continue if no vowels in the word
+                if len(vector_word) < 1:
+                    continue
+            if len(w.accent) == 1:
+                num = 1
+                accent = w.accent[0]
+                if len(vector_word) == 1:
+                    num = 2
+                elif len(vector_word) == 2:
+                    if accent == 1:
+                        num = 3
+                    elif accent == 0:
+                        num = 4
+                elif len(vector_word) > 2:
+                    num = 5
+
+                #substitution
+                #print(vector_word, accent, w)
+                vector_word[ len(vector_word) - accent - 1 ] = num
+            vector = vector + vector_word
+
+        test41 = vector[0::2]
+        is_ymb = False
+        if 3 not in test41 and 4 not in test41 and 5 not in test41:
+            is_ymb = True
+            # is_ymb = any(x in [1, 2] for x in test41)
+
+        test42 = vector[1::2]
+        is_horey = False
+        if 3 not in test42 and 4 not in test42 and 5 not in test42:
+            is_horey = True
+            # is_horey = any(x in [1, 2] for x in test42)
+
+        is_daktil_1 = any(x in [1, 2, 3] for x in vector[1::3])
+        is_daktil_2 = any(x in [1, 2, 4] for x in vector[2::3])
+        is_daktil = False
+        if is_daktil_1 and is_daktil_2:
+            is_daktil = True
+
+        is_anapest_1 = any(x in [1, 2, 3] for x in vector[0::3])
+        is_anapest_2 = any(x in [1, 2, 4] for x in vector[1::3])
+        is_anapest = False
+        if is_anapest_1 and is_anapest_2:
+            is_anapest = True
+
+        is_amfibrahii_1 = any(x in [1, 2, 3] for x in vector[2::3])
+        is_amfibrahii_2 = any(x in [1, 2, 4] for x in vector[0::3])
+        is_amfibrahii = False
+        if is_amfibrahii_1 and is_amfibrahii_2:
+            is_amfibrahii = True
+
+        if is_ymb:
+            return 'yamb', float( len(vector) )/2.
+        if is_horey:
+            return 'horey', float( len(vector) )/2.
+        if is_daktil:
+            return 'daktil', float( len(vector) )/3.
+        if is_anapest:
+            return 'anapest', float( len(vector) )/3.
+        if is_amfibrahii:
+            return 'amfibrahii', float( len(vector) )/3.
+
+        #TODO: more check
+
+        return None, None
+        # return vector
 
     def highlight_words(self, line, word):
         #print(line, word)

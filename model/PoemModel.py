@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from LineModel import LineModel
+import math
 
 class PoemModel(object):
     original_title = ''
@@ -55,3 +56,16 @@ class PoemModel(object):
             elif l.accent_type == LineModel.ACCENT_TYPE_D:
                 num_d+=1
         return num_m, num_f, num_d, num_none
+
+    def get_metrical_feet(self):
+        variants = []
+        stops = []
+        for l in self.lines:
+            variant, stop = l.get_metrical_feet()
+            variants.append( variant )
+            stops.append( stop )
+        res = max(set(variants), key=variants.count)
+        res_stop = round( float(sum(stops))/float(len(stops)) )
+        #TODO make threshold on number of occurrences
+        # return variants
+        return res, int( res_stop )

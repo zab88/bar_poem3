@@ -21,7 +21,7 @@ HomonimArray = []
 
 class WordModel(object):
     #!word_original = ''
-    #!accents = [255]
+    #!accent = []
     isHomonim = False
     id_zaliznyak = 0
     is_debug = False
@@ -86,7 +86,8 @@ class WordModel(object):
         curDB.execute("SELECT * FROM accent_aot WHERE word_form LIKE '"+self.word_original+"'")
         self.accent = []
         for r in curDB.fetchall():
-            self.accent.append( int(r[2]) )
+            if r[2] != '255':
+                self.accent.append( int(r[2]) )
 
         #merge if all accents equal
         if unique == True:
