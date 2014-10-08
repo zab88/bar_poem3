@@ -18,6 +18,7 @@ class LineModel():
     ACCENT_TYPE_F = 'F'
     ACCENT_TYPE_D = 'D'
     ACCENT_TYPE_N = 'N'
+    ACCENT_TYPE_None = None
 
     def __init__(self, line_original):
         self.line_original = line_original.decode('utf-8').lower().encode('utf-8')
@@ -37,6 +38,9 @@ class LineModel():
             self.words.append(new_word_model)
 
     def __init_accent_type__(self):
+        if len(self.words) < 1:
+            self.accent_type = self.ACCENT_TYPE_None
+            return
         w = self.words[-1:][0]
         if len(w.accent) == 1:
             if w.accent[0] == 255:
@@ -99,7 +103,7 @@ class LineModel():
                 #continue if no vowels in the word
                 if len(vector_word) < 1:
                     continue
-            if len(w.accent) == 1:
+            if len(w.accent) == 1 and w.accent[0] != 255:
                 num = 1
                 accent = w.accent[0]
                 if len(vector_word) == 1:

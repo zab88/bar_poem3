@@ -43,6 +43,13 @@ class PoemModel(object):
         else:
             return None, all_homonyms
 
+    def count_lines(self):
+        num_lines = 0
+        for l in self.lines:
+            if len(l.words) > 0:
+                num_lines += 1
+        return num_lines
+
     def get_num_rhymes(self):
         global ACCENT_TYPE_M, ACCENT_TYPE_F, ACCENT_TYPE_D, ACCENT_TYPE_N
         num_m, num_f, num_d, num_none = 0, 0, 0, 0

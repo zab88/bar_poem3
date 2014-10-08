@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.PoemModel import PoemModel
+import pymysql
 
 poem1_file = open('poems/test.txt', 'r')
 poem1_text = poem1_file.read()
@@ -15,3 +16,4 @@ poem1 = PoemModel('', poem1_text)
 # print(num_m, num_f, num_d, num_none)
 
 print( poem1.get_metrical_feet() )
+print( poem1.count_lines() )
