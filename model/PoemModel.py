@@ -64,6 +64,10 @@ class PoemModel(object):
                 num_d+=1
         return num_m, num_f, num_d, num_none
 
+    def get_strofika(self):
+        #split by empty lines
+        pass
+
     def get_metrical_feet(self):
         variants = []
         stops = []

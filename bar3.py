@@ -12,8 +12,8 @@ poem1 = PoemModel('', poem1_text)
 #         # print(w.word_original)
 #         poem1_words.append(w.word_original)
 
-# num_m, num_f, num_d, num_none = poem1.get_num_rhymes()
-# print(num_m, num_f, num_d, num_none)
+num_m, num_f, num_d, num_none = poem1.get_num_rhymes()
+print(num_m, num_f, num_d, num_none)
 
 print( poem1.get_metrical_feet() )
 print( poem1.count_lines() )
