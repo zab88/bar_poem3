@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
-import pymysql
 from model.PoemModel import PoemModel
 import pymysql
 
 poem_id = sys.argv[1]
 
 #connecting DB
-conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='bar_poem3', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1', port=3306, user='bar_poem3', passwd='ACLQ7E7JcAwE9K3e', db='bar_poem3', charset='utf8')
 curDB = conn.cursor()
 
 #reading poem from DB

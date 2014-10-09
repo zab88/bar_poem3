@@ -7,7 +7,8 @@ if (!isset($_REQUEST['poem_body'])){
 $poem_body = $_REQUEST['poem_body'];
 
 //insert into database
-$link = mysqli_connect("localhost", "root", "", "bar_poem3") or die("Error " . mysqli_error($link));
+$link = mysqli_connect("localhost", "bar_poem3", "ACLQ7E7JcAwE9K3e", "bar_poem3") or die("Error " . mysqli_error($link));
+mysqli_set_charset($link, "utf8");
 mysqli_query($link, "INSERT INTO poems (poem_body) VALUES ('{$poem_body}')");
 $last_id = mysqli_insert_id($link);
 

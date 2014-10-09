@@ -4,7 +4,7 @@
     <list default="true" id="b7191749-26df-412a-a1ed-c3040d4d9331" name="Default" comment="" />
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ajax.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412835157883" ignored="false" />
+    <file path="/ajax.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412841696106" ignored="false" />
     <file path="/main.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412835957337" ignored="false" />
     <file path="/index.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412769588575" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,7 +47,7 @@
       <file leaf-file-name="ajax.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="84" selection-start="582" selection-end="582" vertical-scroll-proportion="0.5717054">
+            <state line="10" column="34" selection-start="310" selection-end="310" vertical-scroll-proportion="0.33797216">
               <folding />
             </state>
           </provider>
@@ -64,8 +64,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/ajax.php" />
       </list>
     </option>
   </component>
@@ -264,7 +264,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="84" selection-start="582" selection-end="582" vertical-scroll-proportion="0.5717054">
+        <state line="10" column="34" selection-start="310" selection-end="310" vertical-scroll-proportion="0.33797216">
           <folding />
         </state>
       </provider>
