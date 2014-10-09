@@ -4,6 +4,8 @@
 if (!isset($_REQUEST['poem_body'])){
     exit( '{error:1}' );
 }
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 $poem_body = $_REQUEST['poem_body'];
 
 //insert into database
