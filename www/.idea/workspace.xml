@@ -4,8 +4,8 @@
     <list default="true" id="b7191749-26df-412a-a1ed-c3040d4d9331" name="Default" comment="" />
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ajax.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412778250463" ignored="false" />
-    <file path="/main.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412769608841" ignored="false" />
+    <file path="/ajax.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412835157883" ignored="false" />
+    <file path="/main.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412835957337" ignored="false" />
     <file path="/index.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412769588575" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +29,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="93" selection-start="1857" selection-end="1857" vertical-scroll-proportion="-3.1176472">
+            <state line="44" column="24" selection-start="1911" selection-end="1911" vertical-scroll-proportion="28.882353">
               <folding />
             </state>
           </provider>
@@ -38,7 +38,7 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="10" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
+            <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="ajax.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="49" selection-start="304" selection-end="304" vertical-scroll-proportion="0.32945737">
+            <state line="19" column="84" selection-start="582" selection-end="582" vertical-scroll-proportion="0.5717054">
               <folding />
             </state>
           </provider>
@@ -64,8 +64,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/ajax.php" />
+        <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
   </component>
@@ -250,21 +250,21 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="93" selection-start="1857" selection-end="1857" vertical-scroll-proportion="-3.1176472">
+        <state line="44" column="24" selection-start="1911" selection-end="1911" vertical-scroll-proportion="28.882353">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
+        <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="49" selection-start="304" selection-end="304" vertical-scroll-proportion="0.32945737">
+        <state line="19" column="84" selection-start="582" selection-end="582" vertical-scroll-proportion="0.5717054">
           <folding />
         </state>
       </provider>
