@@ -64,9 +64,39 @@ class PoemModel(object):
                 num_d+=1
         return num_m, num_f, num_d, num_none
 
+    def get_sound_endings(self):
+        endings = []
+        for l in self.lines:
+            if len(l.words) > 0:
+                endings.append(l.words[-1:][0].word_original[-2:])
+        return endings
+    def check_abab(self, l):
+        yes_vote = 0
+        no_vote = 0
+        if len(l)<1:
+            return False
+        for chunk in l:
+            # print(chunk[0] +'!'+chunk[2])
+            if chunk[0] == chunk[2] and chunk[1]==chunk[3]:
+                yes_vote+=1
+            else:
+                no_vote+=1
+        if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
+            return True
+        else:
+            return False
     def get_strofika(self):
         #split by empty lines
-        pass
+        #split by 4
+        #test abab
+        endings = self.get_sound_endings()
+        # for e in endings:
+        #     print(e)
+
+        test_4 = [endings[i:i+4] for i in range(0, len(endings), 4)]
+        if self.check_abab(test_4):
+            return 'abab';
+        return 'sv.str.'
 
     def get_metrical_feet(self):
         variants = []

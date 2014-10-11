@@ -35,19 +35,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+            <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.501845">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajax.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ajax.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="29" selection-start="146" selection-end="146" vertical-scroll-proportion="0.23658052">
+            <state line="23" column="43" selection-start="736" selection-end="736" vertical-scroll-proportion="-11.5">
               <folding />
             </state>
           </provider>
@@ -255,16 +255,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+        <state line="23" column="43" selection-start="736" selection-end="736" vertical-scroll-proportion="-11.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.php">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="29" selection-start="146" selection-end="146" vertical-scroll-proportion="0.23658052">
+        <state line="16" column="35" selection-start="547" selection-end="547" vertical-scroll-proportion="0.501845">
           <folding />
         </state>
       </provider>
