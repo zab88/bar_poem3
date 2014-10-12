@@ -68,6 +68,7 @@ class PoemModel(object):
         endings = []
         for l in self.lines:
             if len(l.words) > 0:
+                # print(l.words[-1:][0].word_original)
                 endings.append(l.words[-1:][0].word_original[-2:])
         return endings
     def check_abab(self, l):
@@ -77,6 +78,8 @@ class PoemModel(object):
             return False
         for chunk in l:
             # print(chunk[0] +'!'+chunk[2])
+            if len(chunk) < 4:
+                continue
             if chunk[0] == chunk[2] and chunk[1]==chunk[3]:
                 yes_vote+=1
             else:
@@ -85,6 +88,41 @@ class PoemModel(object):
             return True
         else:
             return False
+    def check_abba(self, l):
+        yes_vote = 0
+        no_vote = 0
+        if len(l)<1:
+            return False
+        for chunk in l:
+            # print(chunk[0] +'!'+chunk[2])
+            if len(chunk) < 4:
+                continue
+            if chunk[0] == chunk[3] and chunk[1]==chunk[2]:
+                yes_vote+=1
+            else:
+                no_vote+=1
+        if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
+            return True
+        else:
+            return False
+    def check_aabb(self, l):
+        yes_vote = 0
+        no_vote = 0
+        if len(l)<1:
+            return False
+        for chunk in l:
+            if len(chunk) < 4:
+                continue
+            # print(chunk[0] +'!'+chunk[1]+'&'+chunk[2] +'!'+chunk[3])
+            if chunk[0]==chunk[1] and chunk[2]==chunk[3]:
+                yes_vote+=1
+            else:
+                no_vote+=1
+        if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
+            return True
+        else:
+            return False
+
     def get_strofika(self):
         #split by empty lines
         #split by 4
@@ -96,6 +134,10 @@ class PoemModel(object):
         test_4 = [endings[i:i+4] for i in range(0, len(endings), 4)]
         if self.check_abab(test_4):
             return 'abab';
+        if self.check_aabb(test_4):
+            return 'aabb';
+        if self.check_abba(test_4):
+            return 'abba';
         return 'sv.str.'
 
     def get_metrical_feet(self):
