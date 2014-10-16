@@ -23,6 +23,11 @@ num_m, num_f, num_d, num_none = poem1.get_num_rhymes()
 lines_num = poem1.count_lines()
 razmer, stop = poem1.get_metrical_feet()
 
+strofika = poem1.get_strofika()
+partial_line = poem1.get_partial_line()
+m_no, g_no, d_no = poem1.get_no_rhymes()
+strofika_type = poem1.get_strofika_type()
+
 #writing result
 query_str = "INSERT INTO `poems_result` (" \
               "`poem_id`, " \
@@ -32,7 +37,13 @@ query_str = "INSERT INTO `poems_result` (" \
               "`m_end`, " \
               "`g_end`, " \
               "`d_end`, " \
-              "`null_end`" \
+              "`null_end`," \
+              "`strofika`," \
+              "`partial_line`," \
+              "`m_no`," \
+              "`g_no`," \
+              "`d_no`," \
+              "`strofika_type`" \
               ") VALUES (" \
               "'"+str(poem_id)+"', " \
               "'"+str(lines_num)+"', " \
@@ -41,7 +52,13 @@ query_str = "INSERT INTO `poems_result` (" \
               "'"+str(num_m)+"', " \
               "'"+str(num_f)+"', " \
               "'"+str(num_d)+"', " \
-              "'"+str(num_none)+"')"
+              "'"+str(num_none)+"', " \
+              "'"+str(strofika)+"', " \
+              "'"+str(len(partial_line))+"', " \
+              "'"+str(m_no)+"', " \
+              "'"+str(g_no)+"', " \
+              "'"+str(d_no)+"', " \
+              "'"+str(strofika_type)+"')"
 # print(query_str)
 curDB.execute(query_str)
 conn.commit()

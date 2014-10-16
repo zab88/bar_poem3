@@ -26,3 +26,6 @@ print('partial line: '+str(len(partial_line)) )
 
 m_no, g_no, d_no = poem1.get_no_rhymes()
 print(m_no, g_no, d_no)
+
+strofika_type = poem1.get_strofika_type()
+print strofika_type
