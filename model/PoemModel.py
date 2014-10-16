@@ -183,7 +183,7 @@ class PoemModel(object):
                         g_no+=1
                     if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_D:
                         d_no+=1
-                if a1_endings[a_index].words[-1:][0].word_original[-2:0] == a2_endings[a_index].words[-1:][0].word_original[-2:0]:
+                elif a1_endings[a_index].words[-1:][0].word_original[-2:] == a2_endings[a_index].words[-1:][0].word_original[-2:]:
                     continue
                 else:
                     if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_M:
@@ -203,7 +203,7 @@ class PoemModel(object):
                         g_no+=1
                     if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_D:
                         d_no+=1
-                if b1_endings[b_index].words[-1:][0].word_original[-2:0] == b2_endings[b_index].words[-1:][0].word_original[-2:0]:
+                elif b1_endings[b_index].words[-1:][0].word_original[-2:] == b2_endings[b_index].words[-1:][0].word_original[-2:]:
                     continue
                 else:
                     if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_M:
