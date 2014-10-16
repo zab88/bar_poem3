@@ -7,6 +7,7 @@ MorphEngine = pymorphy2.MorphAnalyzer()
 #init pymysql
 conn = pymysql.connect(host='127.0.0.1', port=3306, user='bar_poem3', passwd='ACLQ7E7JcAwE9K3e', db='bar_poem3', charset='utf8')
 curDB = conn.cursor()
+curDB.execute('set names utf8')
 HomonimArray = []
 
 #read homonyms

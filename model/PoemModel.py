@@ -7,6 +7,7 @@ class PoemModel(object):
     original_text = ''
 
     #lines = []
+    strofika = None
 
     def __init__(self, original_title, original_text, years=[]):
         self.original_title = original_title
@@ -133,12 +134,90 @@ class PoemModel(object):
 
         test_4 = [endings[i:i+4] for i in range(0, len(endings), 4)]
         if self.check_abab(test_4):
+            self.strofika = 'abab'
             return 'abab';
         if self.check_aabb(test_4):
+            self.strofika = 'aabb'
             return 'aabb';
         if self.check_abba(test_4):
+            self.strofika = 'abba'
             return 'abba';
-        return 'sv.str.'
+        self.strofika = 'sv.str.'
+        return self.strofika
+
+    def get_partial_line(self):
+        return []
+
+    def get_no_rhymes(self):
+        m_no, g_no, d_no = 0, 0, 0
+        if self.strofika is not None and self.strofika != 'sv.str.' and len(self.strofika) == 4:
+            #check for length of 4
+            last_m_ending, last_g_ending, last_d_ending = None, None, None
+            a1_endings, a2_endings = [], []
+            b1_endings, b2_endings = [], []
+            if self.strofika == 'abab' or self.strofika == 'baba':
+                a1, a2, b1, b2 = 0, 2, 1, 3
+            if self.strofika == 'abba' or self.strofika == 'baab':
+                a1, a2, b1, b2 = 0, 3, 1, 2
+            if self.strofika == 'aabb' or self.strofika == 'bbaa':
+                a1, a2, b1, b2 = 0, 1, 2, 3
+            for line_num, l in enumerate( self.lines ):
+                if len(l.words)==0:
+                    continue
+                if a1==(line_num%4):
+                    a1_endings.append(l)
+                if a2==(line_num%4):
+                    a2_endings.append(l)
+                if b1==(line_num%4):
+                    b1_endings.append(l)
+                if b2==(line_num%4):
+                    b2_endings.append(l)
+
+            if len(a1_endings) > len(a2_endings):
+                a2_endings.append(None)
+            for a_index, a in enumerate(a1_endings):
+                if a2_endings[a_index] is None:
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_M:
+                        m_no+=1
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_F:
+                        g_no+=1
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_D:
+                        d_no+=1
+                if a1_endings[a_index].words[-1:][0].word_original[-2:0] == a2_endings[a_index].words[-1:][0].word_original[-2:0]:
+                    continue
+                else:
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_M:
+                        m_no+=1
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_F:
+                        g_no+=1
+                    if a1_endings[a_index].accent_type == LineModel.ACCENT_TYPE_D:
+                        d_no+=1
+
+            if len(b1_endings) > len(b2_endings):
+                b2_endings.append(None)
+            for b_index, b in enumerate(b1_endings):
+                if b2_endings[b_index] is None:
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_M:
+                        m_no+=1
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_F:
+                        g_no+=1
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_D:
+                        d_no+=1
+                if b1_endings[b_index].words[-1:][0].word_original[-2:0] == b2_endings[b_index].words[-1:][0].word_original[-2:0]:
+                    continue
+                else:
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_M:
+                        m_no+=1
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_F:
+                        g_no+=1
+                    if b1_endings[b_index].accent_type == LineModel.ACCENT_TYPE_D:
+                        d_no+=1
+        return m_no, g_no, d_no
+    def get_strofika_type(self):
+        #if parnaya rifmovka
+        if self.strofika == 'aabb' or self.strofika == 'bbaa':
+            return 4
+        return 2
 
     def get_metrical_feet(self):
         variants = []
