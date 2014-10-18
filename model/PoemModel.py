@@ -223,6 +223,8 @@ class PoemModel(object):
         variants = []
         stops = []
         for l in self.lines:
+            if len(l.words) < 1:
+                continue
             variant, stop = l.get_metrical_feet()
             variants.append( variant )
             stops.append( stop )

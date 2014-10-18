@@ -38,6 +38,8 @@ class WordModel(object):
         self.word_original = self.word_original.replace("„", "")
         self.word_original = self.word_original.replace("„", "")
         self.word_original = self.word_original.replace("«", "")
+        self.word_original = self.word_original.replace("»", "")
+        self.word_original = self.word_original.replace("“", "")
 
         self.word_original = self.word_original.decode('utf-8')
         self.accent = []

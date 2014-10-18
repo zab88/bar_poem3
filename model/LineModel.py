@@ -31,7 +31,7 @@ class LineModel():
         global stopwords
         tokens = nltk.word_tokenize( self.line_original )
         tokens = [i for i in tokens if ( i not in string.punctuation )]
-        tokens = [i for i in tokens if ( i not in ['...', '—'] )]
+        tokens = [i for i in tokens if ( i not in ['...', '—', '»', '«', '“'] )]
         #now we do not need stop words elimination
         if False:
             tokens = [i for i in tokens if ( i not in stopwords )]
