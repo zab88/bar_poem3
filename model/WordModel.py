@@ -5,7 +5,7 @@ import pymysql
 #init pymorphy2
 MorphEngine = pymorphy2.MorphAnalyzer()
 #init pymysql
-conn = pymysql.connect(host='127.0.0.1', port=3306, user='bar_poem3', passwd='ACLQ7E7JcAwE9K3e', db='bar_poem3', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1', port=3306, user='bar_poem3', passwd='ACLQ7E7JcAwE9K3e', db='bar_poem3', charset='utf8', autocommit = True)
 curDB = conn.cursor()
 curDB.execute('set names utf8')
 HomonimArray = []
@@ -96,6 +96,28 @@ class WordModel(object):
         if unique == True:
             if len(set(self.accent)) == 1:
                 self.accent = self.accent[0:1]
+            else:
+                #try search for accent among manually prepared
+                log_accent = self.search_and_log_accent()
+                if log_accent != 255:
+                    self.accent = [log_accent]
+                    # print(self.accent)
+
+    def search_and_log_accent(self):
+        global curDB
+        curDB.execute("SELECT * FROM accent_log WHERE word_form LIKE '"+self.word_original+"'")
+        accent_log = []
+        for r in curDB.fetchall():
+            accent_log.append( int(r[2]) )
+        if len(accent_log)==1 and accent_log[0] != '255':
+            return accent_log[0]
+
+        #adding
+        if len(accent_log) < 1:
+            sql_add = "INSERT INTO `accent_log` (`id`, `word_form`, `accent`) VALUES (NULL, '"+self.word_original+"', '255')"
+            curDB.execute(sql_add)
+
+        return 255
 
     def searh_starling_rinet(self, word):
         global HomonimArray
