@@ -34,12 +34,15 @@ class WordModel(object):
 
     def __init__(self, word_original):
         self.word_original = word_original.replace(",", "")
+        self.word_original = word_original.replace(".", "")
         self.word_original = self.word_original.replace(":", "")
         self.word_original = self.word_original.replace("„", "")
         self.word_original = self.word_original.replace("„", "")
         self.word_original = self.word_original.replace("«", "")
         self.word_original = self.word_original.replace("»", "")
         self.word_original = self.word_original.replace("“", "")
+        if self.word_original == '':
+            print('empty word')
 
         self.word_original = self.word_original.decode('utf-8')
         self.accent = []
@@ -94,8 +97,16 @@ class WordModel(object):
 
         #merge if all accents equal
         if unique == True:
+            set_accent = list(set(self.accent))
+            # print(set_accent)
             if len(set(self.accent)) == 1:
                 self.accent = self.accent[0:1]
+            elif len(set_accent) == 2 and (set_accent[0]=='255' or set_accent[1]=='255'):
+                #aot - getting defined variant if 255 and defined exist
+                if set_accent[0]!='255':
+                    self.accent = [set_accent[0]]
+                else:
+                    self.accent = [set_accent[1]]
             else:
                 #try search for accent among manually prepared
                 log_accent = self.search_and_log_accent()
