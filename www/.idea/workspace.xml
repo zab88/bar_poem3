@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/ajax.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412841696106" ignored="false" />
     <file path="/main.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413462906296" ignored="false" />
-    <file path="/index.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1412769588575" ignored="false" />
+    <file path="/index.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413721389861" ignored="false" />
     <file path="/Dummy.txt" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413306921770" ignored="false" />
     <file path="$PROJECT_DIR$/../../ann.me/application/controllers/t.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413306924282" ignored="false" />
     <file path="$PROJECT_DIR$/../../ann.me/application/views/create/create_view.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413306924282" ignored="false" />
@@ -15,6 +15,7 @@
     <file path="$PROJECT_DIR$/../../ann.me/www/js/se_table.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413350354284" ignored="false" />
     <file path="/se_edit_view.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413308227023" ignored="false" />
     <file path="/se_table.js" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413350347002" ignored="false" />
+    <file path="$PROJECT_DIR$/../../robocar/www/telemetry/index.php" changelist="b7191749-26df-412a-a1ed-c3040d4d9331" time="1413525795739" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,28 +35,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="24" selection-start="1911" selection-end="1911" vertical-scroll-proportion="0.0">
+            <state line="27" column="55" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.5089463">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phonetic_analysis/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="256" selection-end="256" vertical-scroll-proportion="0.2509225">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ajax.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="43" selection-start="736" selection-end="736" vertical-scroll-proportion="-11.5">
+            <state line="22" column="25" selection-start="583" selection-end="583" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
@@ -71,15 +63,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="164" />
+    <option name="x" value="157" />
     <option name="width" value="1209" />
     <option name="height" value="728" />
   </component>
@@ -138,6 +130,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="phonetic_analysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -148,7 +154,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ann.me" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../robocar/www" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager">
@@ -175,7 +181,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="164" y="0" width="1209" height="728" extended-state="0" />
+    <frame x="157" y="0" width="1209" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -279,23 +285,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="24" selection-start="1911" selection-end="1911" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="43" selection-start="736" selection-end="736" vertical-scroll-proportion="-11.5">
+        <state line="23" column="43" selection-start="736" selection-end="736" vertical-scroll-proportion="0.5944334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="256" selection-end="256" vertical-scroll-proportion="0.2509225">
+        <state line="9" column="33" selection-start="290" selection-end="290" vertical-scroll-proportion="0.28228784">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phonetic_analysis/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="25" selection-start="583" selection-end="583" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="55" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.5089463">
           <folding />
         </state>
       </provider>
