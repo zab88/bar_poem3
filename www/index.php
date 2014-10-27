@@ -139,7 +139,19 @@
                       </div>
                   </div>
                   <div class="form-group">
-                      <label for="Y11" class="col-sm-8 control-label">тип строфической формы</label>
+                      <label for="Y11" class="col-sm-8 control-label"
+                             title="sss"
+                             data-toggle="popover"
+                             data-trigger="focus"
+                             data-content="some content">
+                          тип строфической формы
+                          <button type="button" id="help_Y11" class="btn btn-xs btn-default"
+                             data-toggle="popover"
+                             data-trigger="hover"
+                             data-placement="left"
+                             title="тип строфической формы"
+                             data-content="<ol><li>стихотворения, состоящие из одной строфы (восемь строк или меньше)</li><li>правильно повторяющиеся строфы</li><li>вольные станцы</li><li>парная рифмовка</li><li>вольная рифмовка</li></ol>">?</button>
+                      </label>
                       <div class="col-sm-4">
                           <input type="text" class="form-control" id="Y11" disabled>
                       </div>

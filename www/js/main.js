@@ -23,4 +23,5 @@ jQuery(document).ready(function(){
         })
     })
 
+    $('#help_Y11').popover({html:true})
 })
