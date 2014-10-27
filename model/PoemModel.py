@@ -70,7 +70,8 @@ class PoemModel(object):
         for l in self.lines:
             if len(l.words) > 0:
                 # print(l.words[-1:][0].word_original)
-                endings.append(l.words[-1:][0].word_original[-2:])
+                # endings.append(l.words[-1:][0].word_original[-2:])
+                endings.append(l.words[-1:][0].get_sound_ending())
         return endings
     def check_abab(self, l):
         yes_vote = 0

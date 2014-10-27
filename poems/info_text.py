@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pymysql
+import string
 
 f = open('C:\MyPrograms\python2\\bar_poem2\pushkin/pushkin_aleksandr_polnoe_sobranie_stihotvoreniy.txt', 'r')
 all_lines = f.readlines()
@@ -39,9 +40,32 @@ def make_poems(lines):
 
 def compare_names(n1, n2):
     #leave only letters
-    n1_new = n1
-    n2_new = n2
+    new_symbols = u' …«»–— '
+    string.punctuation += new_symbols
+    # string.punctuation = string.punctuation.encode('utf-8')
+    # print(string.punctuation)
+    n1 = n1.decode('utf-8').lower()
+    n2 = n2.decode('utf-8').lower()
+    n1_new = (c for c in n1 if c not in string.punctuation)
+    n1_new = ''.join(n1_new)
+    n2_new = (c for c in n2 if c not in string.punctuation)
+    n2_new = ''.join(n2_new)
+    # n1_new = n1
+    # n2_new = n2
+    #search shortest
+    if len(n1_new) < len(n2_new):
+        n_short = n1_new
+        n_long = n2_new
+    else:
+        n_short = n2_new
+        n_long = n1_new
+    # if len(n_short.decode('utf-8'))>10 and n_short in n_long:
+    #     return True
+    # print(n1_new)
+    if n1_new[:12] == n2_new[:12]:
+        return True
     if n1_new == n2_new:
+        # print(n1_new+' good')
         return True
     return False
 
@@ -58,6 +82,7 @@ curDB.execute("SET NAMES utf8")
 
 curDB.execute("SELECT * FROM poems_info")
 i = 0
+jj = 0
 for r in curDB.fetchall():
     j=0
     for el in made_poems:
@@ -66,9 +91,11 @@ for r in curDB.fetchall():
             i += 1
             j += 1
             if j > 1:
+                jj += 1
                 print(el['name']+' twice!!')
             # print(el['name']+' '+r[1].encode('utf-8'))
             #ok, found, let's write to DB
             curDB.execute("""UPDATE `poems_info` SET `poem_body` = %s WHERE  `id` = %s """, (el['text'], str(r[0])))
-
+    # break
 print(i)
+print(jj)

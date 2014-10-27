@@ -42,6 +42,10 @@ class Sound {
 
     }
 
+    public function set_accent($accent){
+
+    }
+
     public function makePhoneticAnalysis(){
         foreach ($this->letters as $letter) {
             $letter->setDefaultSounds();

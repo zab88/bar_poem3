@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pymorphy2
 import pymysql
+from PhoneticModel import PhoneticModel
 
 #init pymorphy2
 MorphEngine = pymorphy2.MorphAnalyzer()
@@ -129,6 +130,10 @@ class WordModel(object):
             curDB.execute(sql_add)
 
         return 255
+
+    def get_sound_ending(self):
+        ph = PhoneticModel(self.word_original)
+        return ph.get_ending()
 
     def searh_starling_rinet(self, word):
         global HomonimArray
