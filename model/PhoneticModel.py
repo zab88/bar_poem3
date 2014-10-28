@@ -2,6 +2,7 @@
 class PhoneticModel(object):
     vowels_sound = [u'и', u'ы', u'у', u'э', u'о', u'а']
     vowels_special = [u"я", u"е", u"ё", u"ю"]
+    vowels = [u'и', u'ы', u'у', u'э', u'о', u'а', u"я", u"е", u"ё", u"ю"]
     consonants_sound = [u'б', u'в', u'г', u'д', u'з', u'к', u'л', u'м', u'н', u'п', u'р', u'с', u'т', u'ф', u'х', u'ж', u'ш', u'ц', u'ч', u'й']
     # voiced_paired = ['б', 'в', 'г', 'д', 'ж', 'з']
     voiced_paired = [u'б', u'в', u'г', u'д', u'ж', u'з']
@@ -37,3 +38,17 @@ class PhoneticModel(object):
 
         self.new_ending = penultimate + last
         return self.new_ending
+
+    #check single vowel and vowels absence
+    @staticmethod
+    def check_single_accent(w):
+        number_of_vowels = 0
+        for el in PhoneticModel.vowels:
+            if el in w:
+                number_of_vowels+=1
+
+        if number_of_vowels == 0:
+            return -1
+        if number_of_vowels == 1:
+            return 0;
+        return 255

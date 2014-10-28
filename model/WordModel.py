@@ -89,6 +89,14 @@ class WordModel(object):
 
 
     def get_aot_accent(self, unique=True):
+        #check for single vowel
+        simple_check = PhoneticModel.check_single_accent(self.word_original)
+        if simple_check == 0:
+            self.accent = [0]
+            return
+        elif simple_check == -1:
+            self.accent = [255]
+            return
         global curDB
         curDB.execute("SELECT * FROM accent_aot WHERE word_form LIKE '"+self.word_original+"'")
         self.accent = []
