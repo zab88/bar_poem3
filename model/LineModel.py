@@ -2,6 +2,7 @@
 import nltk
 import string
 from WordModel import WordModel
+import SettingsModel
 stopwords = nltk.corpus.stopwords.words('russian')
 # stopwords.extend([u'ТАК'.encode('utf-8'), u'ЧТО'.encode('utf-8'), u'ВОТ'.encode('utf-8'), u'ЭТО'.encode('utf-8'), u'КАК'.encode('utf-8')])
 # stopwords.extend([u'БЫТЬ'.encode('utf-8'), u'a'.encode('utf-8')])
@@ -22,6 +23,7 @@ class LineModel():
 
     def __init__(self, line_original):
         self.line_original = line_original.decode('utf-8').lower().encode('utf-8')
+        SettingsModel.CURRENT_LINE_ORIGINAL = self.line_original.decode('utf-8')
         self.words = []
         self.__init_words__()
         self.__init_accent_type__()

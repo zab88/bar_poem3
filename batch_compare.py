@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from model.PoemModel import PoemModel
 import pymysql
+# from model.SettingsModel import
+import model.SettingsModel as SettingsModel
 
 #metric type
 HOREY_ID = 1
@@ -17,6 +19,7 @@ curDB.execute("SET NAMES utf8")
 file = open(file_path, 'w')
 curDB.execute("SELECT * FROM poems_origin") #35, 68
 for r in curDB.fetchall():
+    SettingsModel.CURRENT_POEM_ID = r[0]
     #print(r[2])
     poem_text = r[2].encode('utf-8') #text
     poem1 = PoemModel('', poem_text)

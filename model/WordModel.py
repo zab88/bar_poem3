@@ -2,6 +2,7 @@
 import pymorphy2
 import pymysql
 from PhoneticModel import PhoneticModel
+import SettingsModel
 
 #init pymorphy2
 MorphEngine = pymorphy2.MorphAnalyzer()
@@ -124,8 +125,12 @@ class WordModel(object):
                     # print(self.accent)
 
     def search_and_log_accent(self):
+        # log only for batch
+        if SettingsModel.CURRENT_POEM_ID < 0:
+            return 255
         global curDB
-        curDB.execute("SELECT * FROM accent_log WHERE word_form LIKE '"+self.word_original+"'")
+        #print(SettingsModel.CURRENT_LINE_ORIGINAL, self.word_original)
+        curDB.execute("SELECT * FROM accent_log WHERE poem_id='"+ str(SettingsModel.CURRENT_POEM_ID) +"' AND word_form LIKE '"+self.word_original+"' AND line_original LIKE '"+SettingsModel.CURRENT_LINE_ORIGINAL+"' ")
         accent_log = []
         for r in curDB.fetchall():
             accent_log.append( int(r[2]) )
@@ -134,7 +139,8 @@ class WordModel(object):
 
         #adding
         if len(accent_log) < 1:
-            sql_add = "INSERT INTO `accent_log` (`id`, `word_form`, `accent`) VALUES (NULL, '"+self.word_original+"', '255')"
+            sql_add = "INSERT INTO `accent_log` (`id`, `word_form`, `accent`, `poem_id`, `line_original`) VALUES (NULL, '"+self.word_original+"', '255', "+ str(SettingsModel.CURRENT_POEM_ID) +", '"+ SettingsModel.CURRENT_LINE_ORIGINAL +"')"
+            #print(sql_add)
             curDB.execute(sql_add)
 
         return 255
