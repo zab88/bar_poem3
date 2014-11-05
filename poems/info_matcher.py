@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 import pymysql
 import re
+import difflib
 
 conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='bar_poem3', charset='utf8', autocommit=True)
 curDB = conn.cursor()
@@ -8,7 +9,7 @@ curDB.execute("SET NAMES utf8")
 
 def delete_punctutaion(name):
     name = name.lower()
-    letters = u'йцукенгшщзхъэждлорпавыфячсмитьбю'
+    letters = u'йцукенгшщзхъэждлорпавыфячсмитьбюalfieri'
     new_name = ''
     for l in name:
         if l in letters:
@@ -28,7 +29,9 @@ def delete_small_words(text):
 def compare_names(n1, line1, n2):
     n2_origin = n2
     #delete name in parentheses
-    # n2 = re.sub(r'\([^)]*\)', '', n2)
+    n2_test = re.sub(r'\([^)]*\)', '', n2)
+    if len(n2_test) > 16:
+        n2 = n2_test
 
     n1 = delete_punctutaion(n1)
     n2 = delete_punctutaion(n2)
@@ -51,10 +54,17 @@ def compare_names(n1, line1, n2):
 
     if n1 == n2 or line1 == n2:
         return True
+    #fuzzy matching
+    ratio_n1_n2 = difflib.SequenceMatcher(None, n1, n2).ratio()
+    ratio_line1_n2 = difflib.SequenceMatcher(None, line1, n2).ratio()
+    if ratio_n1_n2 > 0.91 or ratio_line1_n2 > 0.91:
+        print(n1 +' ++' + n2 + ' ++ ' + line1)
+        return True
     return False
 
 #get all poems from academ
 curDB.execute("SELECT * FROM academ16")
+# curDB.execute("SELECT * FROM academ16 WHERE id=587")
 academ16 = []
 for r in curDB.fetchall():
     # print( r[2], delete_punctutaion(r[2]) )
@@ -65,6 +75,7 @@ for r in curDB.fetchall():
 
 #get all poems from konk
 curDB.execute("SELECT * FROM konkordans")
+# curDB.execute("SELECT * FROM konkordans WHERE id=773")
 konkordans = []
 for r in curDB.fetchall():
     konkordans.append(r)
