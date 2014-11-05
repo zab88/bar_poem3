@@ -64,29 +64,21 @@ for r in curDB.fetchall():
     academ16.append(r)
 
 #get all poems from konk
-curDB.execute("SELECT * FROM konkordans")
-konkordans = []
+curDB.execute("SELECT * FROM poems_info")
+metr_spr = []
 for r in curDB.fetchall():
-    konkordans.append(r)
-
-manual_matcher = dict();
-# academ16 => konkordans
-manual_matcher[596] = 787
+    metr_spr.append(r)
 
 num_found = 0
 for academ in academ16:
-    if academ[0] in manual_matcher.keys():
-        curDB.execute("""UPDATE `academ16` SET `konk_id` = %s WHERE  `id` = %s """, (str(manual_matcher[academ[0]]), str(academ[0])))
-        num_found+=1
-        continue
-    for konk in konkordans:
-        if compare_names(academ[2], academ[3], konk[1]):
-            # print(konk[4]+' ,,'+konk[1])
-            # print(academ[1]+' ,,'+academ[2])
-            # print(academ[1]+' ,,'+academ[3])
-            # print('=======')
+    for mm in metr_spr:
+        if compare_names(academ[2], academ[3], mm[1]):
+            print(str(mm[3])+' ,,'+mm[1])
+            print(academ[1]+' ,,'+academ[2])
+            print(academ[1]+' ,,'+academ[3])
+            print('=======')
             num_found+=1
             #update DB
-            curDB.execute("""UPDATE `academ16` SET `konk_id` = %s WHERE  `id` = %s """, (str(konk[0]), str(academ[0])))
+            curDB.execute("""UPDATE `academ16` SET `metr_id` = %s WHERE  `id` = %s """, (str(mm[0]), str(academ[0])))
 
 print(num_found)
