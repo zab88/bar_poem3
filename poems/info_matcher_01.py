@@ -6,6 +6,10 @@ conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='
 curDB = conn.cursor()
 curDB.execute("SET NAMES utf8")
 
+#set to zero before counting match
+curDB.execute("UPDATE `academ16` SET `metr_id`=0 WHERE `metr_id` IN (147,153,208,309,361,421,437,508,786)")
+exit()
+
 def delete_punctutaion(name):
     name = name.lower()
     letters = u'йцукенгшщзхъэждлорпавыфячсмитьбю'
@@ -36,8 +40,12 @@ def compare_names(n1, line1, n2):
 
     #delete small words5
     # n1 = delete_small_words(n1)
-    # n2 = delete_small_words(n2)
+    n2_test = delete_small_words(n2)
     # line1 = delete_small_words(line1)
+    if len(n2_test)>8:
+        n1 = delete_small_words(n1)
+        n2 = n2_test
+        line1 = delete_small_words(line1)
 
     #delete multiple spaces
     n1 = " ".join(n1.split())
@@ -51,6 +59,13 @@ def compare_names(n1, line1, n2):
 
     if n1 == n2 or line1 == n2:
         return True
+    # get first chars
+    n2_length = len(n2)
+    n1_cutted = n1[:n2_length]
+    if n1_cutted == n2 and n2_length>12:
+        print(n2)
+        return True
+
     return False
 
 #get all poems from academ
@@ -73,10 +88,10 @@ num_found = 0
 for academ in academ16:
     for mm in metr_spr:
         if compare_names(academ[2], academ[3], mm[1]):
-            print(str(mm[3])+' ,,'+mm[1])
-            print(academ[1]+' ,,'+academ[2])
-            print(academ[1]+' ,,'+academ[3])
-            print('=======')
+            # print(str(mm[3])+' ,,'+mm[1])
+            # print(academ[1]+' ,,'+academ[2])
+            # print(academ[1]+' ,,'+academ[3])
+            # print('=======')
             num_found+=1
             #update DB
             curDB.execute("""UPDATE `academ16` SET `metr_id` = %s WHERE  `id` = %s """, (str(mm[0]), str(academ[0])))

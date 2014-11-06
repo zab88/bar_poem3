@@ -7,6 +7,10 @@ conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='
 curDB = conn.cursor()
 curDB.execute("SET NAMES utf8")
 
+#set to zero before counting match
+curDB.execute("UPDATE `academ16` SET `konk_id`=0 WHERE `konk_id` IN (197,258,270,522,528,575,593,606,621,682,700,707,787,796)")
+exit()
+
 def delete_punctutaion(name):
     name = name.lower()
     letters = u'йцукенгшщзхъэждлорпавыфячсмитьбюalfieri'
@@ -28,9 +32,15 @@ def delete_small_words(text):
 
 def compare_names(n1, line1, n2):
     n2_origin = n2
+
+    #delete multiple spaces
+    n1 = " ".join(n1.split())
+    n2 = " ".join(n2.split())
+    line1 = " ".join(line1.split())
+
     #delete name in parentheses
     n2_test = re.sub(r'\([^)]*\)', '', n2)
-    if len(n2_test) > 16:
+    if len(n2_test) > 9:
         n2 = n2_test
 
     n1 = delete_punctutaion(n1)
@@ -57,14 +67,16 @@ def compare_names(n1, line1, n2):
     #fuzzy matching
     ratio_n1_n2 = difflib.SequenceMatcher(None, n1, n2).ratio()
     ratio_line1_n2 = difflib.SequenceMatcher(None, line1, n2).ratio()
-    if ratio_n1_n2 > 0.91 or ratio_line1_n2 > 0.91:
+    if ratio_n1_n2 > 0.87 or ratio_line1_n2 > 0.87:
         print(n1 +' ++' + n2 + ' ++ ' + line1)
         return True
+
+    # print(n1, n2)
     return False
 
 #get all poems from academ
 curDB.execute("SELECT * FROM academ16")
-# curDB.execute("SELECT * FROM academ16 WHERE id=587")
+# curDB.execute("SELECT * FROM academ16 WHERE id=576")
 academ16 = []
 for r in curDB.fetchall():
     # print( r[2], delete_punctutaion(r[2]) )
@@ -75,14 +87,14 @@ for r in curDB.fetchall():
 
 #get all poems from konk
 curDB.execute("SELECT * FROM konkordans")
-# curDB.execute("SELECT * FROM konkordans WHERE id=773")
+# curDB.execute("SELECT * FROM konkordans WHERE id=762")
 konkordans = []
 for r in curDB.fetchall():
     konkordans.append(r)
 
 manual_matcher = dict();
 # academ16 => konkordans
-manual_matcher[596] = 787
+#manual_matcher[596] = 787
 
 num_found = 0
 for academ in academ16:
