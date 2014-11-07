@@ -79,13 +79,15 @@ class PoemModel(object):
         if len(l)<1:
             return False
         for chunk in l:
-            # print(chunk[0] +'!'+chunk[2])
             if len(chunk) < 4:
                 continue
+            # print(chunk[0] +'!'+chunk[2])
             if chunk[0] == chunk[2] and chunk[1]==chunk[3]:
                 yes_vote+=1
             else:
                 no_vote+=1
+        if (yes_vote+no_vote)==0:
+            return False
         if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
             return True
         else:
@@ -103,6 +105,8 @@ class PoemModel(object):
                 yes_vote+=1
             else:
                 no_vote+=1
+        if (yes_vote+no_vote)==0:
+            return False
         if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
             return True
         else:
@@ -120,6 +124,9 @@ class PoemModel(object):
                 yes_vote+=1
             else:
                 no_vote+=1
+
+        if (yes_vote+no_vote)==0:
+            return False
         if float(yes_vote)/float(yes_vote+no_vote) > 0.66:
             return True
         else:

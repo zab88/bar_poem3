@@ -17,10 +17,14 @@ curDB = conn.cursor()
 curDB.execute("SET NAMES utf8")
 
 file = open(file_path, 'w')
-curDB.execute("SELECT * FROM poems_origin") #35, 68
+# curDB.execute("SELECT * FROM poems_origin_generated LIMIT 70, 100000")
+curDB.execute("SELECT * FROM poems_origin_generated") #35, 68
 for r in curDB.fetchall():
     SettingsModel.CURRENT_POEM_ID = r[0]
-    #print(r[2])
+    print(r[1])
+    #TODO make perfect academ 16
+    if len(r[2]) < 10:
+        continue
     poem_text = r[2].encode('utf-8') #text
     poem1 = PoemModel('', poem_text)
 
