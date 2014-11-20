@@ -18,13 +18,15 @@ def get_razmer(tt):
         return 'yamb'
     if u'х' in tt:
         return 'horey'
+    if u'дол' in tt:
+        return 'dolnik'
     if u'д' in tt:
         return 'daktil'
     if u'ам' in tt:
         return 'anapest'
     if u'ан' in tt:
         return 'amfibrahii'
-    return ''
+    return 'other'
 
 curDB.execute("TRUNCATE TABLE poems_origin_generated")
 
