@@ -234,8 +234,14 @@ class PoemModel(object):
             if len(l.words) < 1:
                 continue
             variant, stop = l.get_metrical_feet()
+            #ignore lines with undefined accent
+            if variant is None:
+                continue
             variants.append( variant )
             stops.append( stop )
+        if len(variants) < 1:
+            print "NOTHING!!"
+            return 'other', 0
         res = max(set(variants), key=variants.count)
         res_stop = round( float(sum(stops))/float(len(stops)) )
         #TODO make threshold on number of occurrences

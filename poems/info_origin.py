@@ -75,7 +75,7 @@ for row in curDB.fetchall():
             "`strofika_type`) " \
             "VALUES (" \
             "'"+title+"', " \
-            "'"+poem_body+"', " \
+            "'"+poem_body.replace("'", '`')+"', " \
             "'"+year+"', " \
             "'"+stop+"', " \
             "'"+lines_num+"', " \
@@ -89,6 +89,7 @@ for row in curDB.fetchall():
             "'"+g_no+"', " \
             "'"+d_no+"', " \
             "'"+strofika_type+"');"
+    #print(query)
     print(title)
 
     curDB.execute(query)
