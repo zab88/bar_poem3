@@ -9,6 +9,7 @@ poem_id = sys.argv[1]
 #what a hell, "setsebool -P httpd_can_network_connect_db 1" helped!
 conn = pymysql.connect(user='bar_poem3', passwd='ACLQ7E7JcAwE9K3e', db='bar_poem3', charset='utf8')
 curDB = conn.cursor()
+curDB.execute("SET NAMES utf8")
 
 #reading poem from DB
 curDB.execute("SELECT poem_body FROM poems WHERE id="+poem_id)
@@ -28,6 +29,7 @@ strofika = poem1.get_strofika()
 partial_line = poem1.get_partial_line()
 m_no, g_no, d_no = poem1.get_no_rhymes()
 strofika_type = poem1.get_strofika_type()
+accent_log = poem1.get_draw_accent()
 
 #writing result
 query_str = "INSERT INTO `poems_result` (" \
@@ -44,6 +46,7 @@ query_str = "INSERT INTO `poems_result` (" \
               "`m_no`," \
               "`g_no`," \
               "`d_no`," \
+              "`accent_log`," \
               "`strofika_type`" \
               ") VALUES (" \
               "'"+str(poem_id)+"', " \
@@ -59,6 +62,7 @@ query_str = "INSERT INTO `poems_result` (" \
               "'"+str(m_no)+"', " \
               "'"+str(g_no)+"', " \
               "'"+str(d_no)+"', " \
+              "'"+accent_log+"', " \
               "'"+str(strofika_type)+"')"
 # print(query_str)
 curDB.execute(query_str)

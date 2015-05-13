@@ -64,7 +64,10 @@
                       </div>
                   </div>
                   <div class="form-group">
-                      <div class="col-sm-offset-8 col-sm-4">
+                      <div class="col-sm-offset-4 col-sm-4">
+                          <button type="button" id="count_now" class="btn btn-default">Анализ</button>
+                      </div>
+                      <div class="col-sm-4">
                           <button type="reset" class="btn btn-default" id="reset1">Очистить</button>
                       </div>
                   </div>
@@ -159,8 +162,9 @@
 
                   <!-- END NEW 5 -->
                   <div class="form-group">
-                      <div class="col-sm-offset-8 col-sm-4">
-                          <button type="button" id="count_now" class="btn btn-default">Анализ</button>
+                      <div class="col-sm-12">
+<!--                          <button type="button" id="count_now" class="btn btn-default">Анализ</button>-->
+                          <div class="accent_wrap"></div>
                       </div>
                   </div>
               </form>
@@ -183,6 +187,6 @@
         <script src="js/vendor/typeahead.bundle.js"></script>
 
         <!--<script src="js/data.js"></script>-->
-        <script src="js/main.js"></script>
+        <script src="js/main.js?r=2"></script>
     </body>
 </html>

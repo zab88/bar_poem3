@@ -20,6 +20,8 @@ jQuery(document).ready(function(){
             $('#Y9').val(msg.d_no)
             $('#Y10').val(msg.partial_line)
             $('#Y11').val(msg.strofika_type)
+
+            $('.accent_wrap').html(msg.accent_log)
         })
     })
 

@@ -124,6 +124,28 @@ class WordModel(object):
                     self.accent = [log_accent]
                     # print(self.accent)
 
+    def draw_accent(self):
+        # print(self.word_original)
+        # print(self.word_original, self.word_original.encode('utf-8'))
+        # print(self.word_original[0:1], self.word_original.encode('utf-8')[0:1], u'д')
+        # return self.word_original.encode('utf-8')
+        # return self.word_original
+        vowels = [u'а', u'у', u'о', u'ы', u'и', u'э', u'я', u'ю', u'ё', u'е',
+                  u'А', u'У', u'О', u'Ы', u'И', u'Э', u'Я', u'Ю', u'Ё', u'Е',]
+        if len(self.accent) == 1 and self.accent[0] != 255:
+            html = ''
+            aaa = -1
+            lennn = len(self.word_original)
+            for i in range(0, lennn, 1):
+                if self.word_original[lennn-i-1] in vowels:
+                    aaa += 1
+                    if int(self.accent[0]) == aaa:
+                        html = self.word_original[0:lennn-i-1] + '<b>' + self.word_original[lennn-i-1:lennn-i] + '</b>' + self.word_original[lennn-i:]
+                        return html
+        else:
+            #return as is
+            return self.word_original
+
     def search_and_log_accent(self):
         # log only for batch
         if SettingsModel.CURRENT_POEM_ID < 0:

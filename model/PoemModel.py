@@ -227,6 +227,15 @@ class PoemModel(object):
             return 4
         return 2
 
+    def get_draw_accent(self):
+        html = u''
+        for l in self.lines:
+            for w in l.words:
+                html += w.draw_accent() + u' '
+            html += u'<br />' + u"\r\n"
+        return html
+
+
     def get_metrical_feet(self):
         variants = []
         stops = []
