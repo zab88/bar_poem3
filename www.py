@@ -30,6 +30,7 @@ partial_line = poem1.get_partial_line()
 m_no, g_no, d_no = poem1.get_no_rhymes()
 strofika_type = poem1.get_strofika_type()
 accent_log = poem1.get_draw_accent()
+accent_sign = poem1.get_draw_accent_sign()
 
 #writing result
 query_str = "INSERT INTO `poems_result` (" \
@@ -47,6 +48,7 @@ query_str = "INSERT INTO `poems_result` (" \
               "`g_no`," \
               "`d_no`," \
               "`accent_log`," \
+              "`accent_sign`," \
               "`strofika_type`" \
               ") VALUES (" \
               "'"+str(poem_id)+"', " \
@@ -63,6 +65,7 @@ query_str = "INSERT INTO `poems_result` (" \
               "'"+str(g_no)+"', " \
               "'"+str(d_no)+"', " \
               "'"+accent_log+"', " \
+              "'"+accent_sign+"', " \
               "'"+str(strofika_type)+"')"
 # print(query_str)
 curDB.execute(query_str)

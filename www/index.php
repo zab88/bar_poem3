@@ -165,6 +165,7 @@
                       <div class="col-sm-12">
 <!--                          <button type="button" id="count_now" class="btn btn-default">Анализ</button>-->
                           <div class="accent_wrap"></div>
+                          <div class="accent_sign"></div>
                       </div>
                   </div>
               </form>

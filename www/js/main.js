@@ -22,6 +22,7 @@ jQuery(document).ready(function(){
             $('#Y11').val(msg.strofika_type)
 
             $('.accent_wrap').html(msg.accent_log)
+            $('.accent_sign').html(msg.accent_sign)
         })
     })
 
