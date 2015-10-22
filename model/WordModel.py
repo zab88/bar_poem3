@@ -36,7 +36,7 @@ class WordModel(object):
 
     def __init__(self, word_original):
         self.word_original = word_original.replace(",", "")
-        self.word_original = word_original.replace(".", "")
+        self.word_original = self.word_original.replace(".", "")
         self.word_original = self.word_original.replace(":", "")
         self.word_original = self.word_original.replace("„", "")
         self.word_original = self.word_original.replace("„", "")
