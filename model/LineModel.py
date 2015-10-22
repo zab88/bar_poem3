@@ -31,7 +31,8 @@ class LineModel():
     def __init_words__(self):
         #tokenization
         global stopwords
-        tokens = nltk.word_tokenize( self.line_original )
+        ololo_tokens = self.line_original.replace('?', ' ').replace('!', ' ')
+        tokens = nltk.word_tokenize( ololo_tokens )
         tokens = [i for i in tokens if ( i not in string.punctuation )]
         tokens = [i for i in tokens if ( i not in ['...', '—', '»', '«', '“', ',', "„", ':', "."] )]
         #now we do not need stop words elimination
