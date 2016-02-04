@@ -32,6 +32,8 @@ strofika_type = poem1.get_strofika_type()
 accent_log = poem1.get_draw_accent()
 accent_sign = poem1.get_draw_accent_sign()
 
+accent_sign = poem1.get_accent_prediction()
+
 #writing result
 query_str = "INSERT INTO `poems_result` (" \
               "`poem_id`, " \

@@ -9,6 +9,8 @@ class PoemModel(object):
     #lines = []
     strofika = None
 
+    razmer, stop = 'other', 0
+
     def __init__(self, original_title, original_text, years=[]):
         self.original_title = original_title
         self.original_text = original_text
@@ -243,6 +245,36 @@ class PoemModel(object):
             html += u'<br />' + u"\r\n"
         return html
 
+    def get_accent_prediction(self):
+        html = u'<br /><br />'
+        if self.razmer == 'horey':
+            offset = 0
+            step = 2
+        elif self.razmer == 'yamb':
+            offset = 1
+            step = 2
+        elif self.razmer == 'daktil':
+            offset = 0
+            step = 3
+        elif self.razmer == 'anapest':
+            offset = 1
+            step = 3
+        elif self.razmer == 'amfibrahii':
+            offset = 2
+            step = 3
+        else:
+            return ''
+
+        for l in self.lines:
+            cur_pos = 0
+            for w in l.words:
+                html_new, shift = w.draw_accent_prediction(cur_pos, step, offset)
+                cur_pos += shift
+                html += html_new + u' '
+            # html += u'<br />' + u"\r\n"
+            html += u"\r\n"
+        return html
+
 
     def get_metrical_feet(self):
         variants = []
@@ -263,4 +295,6 @@ class PoemModel(object):
         res_stop = round( float(sum(stops))/float(len(stops)) )
         #TODO make threshold on number of occurrences
         # return variants
+        self.razmer = res
+        self.stop = int(res_stop)
         return res, int( res_stop )

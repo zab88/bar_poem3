@@ -172,6 +172,34 @@ class WordModel(object):
 
         return ' '+html+' '
 
+    def draw_accent_prediction(self, pos, step, offset):
+        # MorphEngine.parse(self.word_original)
+        vowels = [u'а', u'у', u'о', u'ы', u'и', u'э', u'я', u'ю', u'ё', u'е',
+                  u'А', u'У', u'О', u'Ы', u'И', u'Э', u'Я', u'Ю', u'Ё', u'Е',]
+        lennn = len(self.word_original)
+        html = ''
+        vowels_num = 0
+        already_predicted = False
+
+        # if we know accent exactly, return only number of vowels
+        if len(self.accent) == 1 and self.accent[0] != 255:
+            for i in range(0, lennn, 1):
+                if self.word_original[lennn-i-1] in vowels:
+                    vowels_num += 1
+                    html = ''
+        else:
+            for i in range(0, lennn, 1):
+                if self.word_original[lennn-i-1] in vowels:
+                    vowels_num += 1
+                    # generate everything about word
+                    if ((pos+vowels_num)%step == offset) and not already_predicted:
+                        #predicted
+                        html = 'predicted: '+ self.word_original[0:lennn-i-1] + '<b>' + self.word_original[lennn-i-1:lennn-i] + '</b>' + self.word_original[lennn-i:]
+                        html += '<br />'
+                        already_predicted = True
+
+        return html, vowels_num
+
     def search_and_log_accent(self):
         # log only for batch
         if SettingsModel.CURRENT_POEM_ID < 0:
